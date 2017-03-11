@@ -27,11 +27,11 @@ public class ListCommand implements ICommand {
 		//mp总数
 		int mpsSize=mps.size();
 		//总页数
+		int listIndex=0;
 		int pageCount=(mpsSize%53==0?mpsSize/53:mpsSize/53+1);
 		for(int o=0;o<pageCount;o++) {
 			Inventory tempInv=Bukkit.createInventory(null, 54, "§c§l虐狗榜 ❤ #"+(o+1));
 			for(int i=0;i<53;i++) {
-				int listIndex=o*53+i;
 				if(listIndex>mpsSize-1) {
 					break;
 				}
@@ -50,6 +50,7 @@ public class ListCommand implements ICommand {
 				skullMeta.setLore(lores);
 				head.setItemMeta(skullMeta);
 				tempInv.setItem(i, head);
+				listIndex++;
 			}
 			//设置pageItem
 			if(o==0 && pageCount>1) {
@@ -65,6 +66,10 @@ public class ListCommand implements ICommand {
 	@Override
 	public boolean execute(CommandSender cs, Command cmd, String lable, String[] args) {
 		Player player=(Player)cs;
+		if(marriagePlayerListInvs.size()==0) {
+			Util.sendMsg(player, "&c当前没有任何一个玩家结婚!");
+			return true;
+		}
 		if(args.length==1) {
 			player.openInventory(marriagePlayerListInvs.get(0));
 			return true;

@@ -13,7 +13,7 @@ public class BaseCommandHandler implements CommandExecutor {
 	static {
 		commands.put("accept", new AcceptCommand());
 		commands.put("div", new DivorceCommand());
-		//commands.put("info", new InfoCommand());
+		commands.put("info", new InfoCommand());
 		commands.put("pro", new ProposeCommand());
 		commands.put("tp", new TpCommand());
 		commands.put("help", new HelpCommand());

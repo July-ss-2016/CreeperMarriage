@@ -1,6 +1,8 @@
 package vip.creeper.mcserverplugins.creepermarriage;
 import me.clip.placeholderapi.external.EZPlaceholderHook;
 import vip.creeper.mcserverplugins.creepermarriage.caches.MarriageCacheManager;
+import vip.creeper.mcserverplugins.creepermarriage.configs.MainConfig;
+import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 import org.bukkit.entity.Player;
 public class PlaceHolderApiExpansion extends EZPlaceholderHook {
@@ -11,15 +13,24 @@ public class PlaceHolderApiExpansion extends EZPlaceholderHook {
 
 	@Override
 	public String onPlaceholderRequest(final Player player, final String str) {
-		String playerName=player.getName();
+		MarriagePlayer mp=MarriageCacheManager.getMarriagePlayer(player.getName());
 		String result=null;
 		switch(str) {
 		case "ismarried":
-			result=MarriageCacheManager.getMarriagePlayer(player.getName()).isEmpty()?"&f[未婚]":"&d[已婚]";
+			result=mp.isEmpty()?MainConfig.marriedPrefix:MainConfig.unMarriedPrefix;
 			break;
 		case "partner":
-			String partner=MarriageCacheManager.getMarriagePlayer(playerName).getPartnerName();
+			String partner=mp.getPartnerName();
 			result=partner==null?"无":partner;
+			break;
+		case "marriageage":
+			result=String.valueOf(mp.getMarriageAge());
+			break;
+		case "marriedage":
+			result=Util.dateToStr(mp.getMarriedDate());
+			break;
+		case "partnerlastlogintime":
+			result=Util.dateToStr(mp.getPartnerLastLoginTime());
 			break;
 		}
 		return result;

@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 
 import java.util.Date;
 
+import org.bukkit.Effect;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Result;
@@ -18,6 +19,7 @@ import vip.creeper.mcserverplugins.creepermarriage.MarriageItem;
 import vip.creeper.mcserverplugins.creepermarriage.MarriagePlayer;
 import vip.creeper.mcserverplugins.creepermarriage.caches.MarriageCacheManager;
 import vip.creeper.mcserverplugins.creepermarriage.managers.MarriageManager;
+import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 
 public class MainListener implements Listener {
@@ -78,12 +80,16 @@ public class MainListener implements Listener {
 		String playerName=player.getName();
 		Entity entity=event.getRightClicked();
 		//判断是否在潜行
-		if(!player.isSneaking())
+		if(!player.isSneaking()) {
+			return;
+		}
 		if((entity instanceof Player)) {
 			MarriagePlayer mp=MarriageCacheManager.getMarriagePlayer(playerName);
 			if(!mp.isEmpty()) {
 				if(mp.getPartnerName().equals(playerName)) {
-					
+					player.getWorld().playEffect(player.getLocation(), Effect.HEART, 3);
+					Util.sendMsg(player, "a~");
+					Util.sendMsg(entity, "a~");
 				}
 			}
 		}
