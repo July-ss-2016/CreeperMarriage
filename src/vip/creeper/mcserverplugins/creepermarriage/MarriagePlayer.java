@@ -1,4 +1,4 @@
-package vip.creeper.mcserverplugins.creepermarriage.marriage;
+package vip.creeper.mcserverplugins.creepermarriage;
 
 import java.io.File;
 import java.util.Date;

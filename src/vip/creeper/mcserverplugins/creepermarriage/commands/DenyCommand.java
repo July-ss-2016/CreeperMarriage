@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import vip.creeper.mcserverplugins.creepermarriage.Main;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.ProposeRequest;
+import vip.creeper.mcserverplugins.creepermarriage.ProposeRequest;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 public class DenyCommand implements ICommand {

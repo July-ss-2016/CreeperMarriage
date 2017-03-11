@@ -14,10 +14,10 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
+import vip.creeper.mcserverplugins.creepermarriage.MarriageItem;
+import vip.creeper.mcserverplugins.creepermarriage.MarriagePlayer;
 import vip.creeper.mcserverplugins.creepermarriage.caches.MarriageCacheManager;
 import vip.creeper.mcserverplugins.creepermarriage.managers.MarriageManager;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.MarriageItem;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.MarriagePlayer;
 
 
 public class MainListener implements Listener {

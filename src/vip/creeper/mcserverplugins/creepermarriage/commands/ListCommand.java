@@ -12,9 +12,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import vip.creeper.mcserverplugins.creepermarriage.MarriageItem;
+import vip.creeper.mcserverplugins.creepermarriage.MarriagePlayer;
 import vip.creeper.mcserverplugins.creepermarriage.managers.MarriageManager;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.MarriageItem;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.MarriagePlayer;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 public class ListCommand implements ICommand {

@@ -1,4 +1,4 @@
-package vip.creeper.mcserverplugins.creepermarriage.marriage;
+package vip.creeper.mcserverplugins.creepermarriage;
 
 public class ProposeRequest {
 	private String partner;

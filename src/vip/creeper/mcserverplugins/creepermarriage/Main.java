@@ -14,7 +14,6 @@ import vip.creeper.mcserverplugins.creepermarriage.economies.PlayerPointsEconomy
 import vip.creeper.mcserverplugins.creepermarriage.economies.VaultEconomy;
 import vip.creeper.mcserverplugins.creepermarriage.listeners.MainListener;
 import vip.creeper.mcserverplugins.creepermarriage.managers.MarriageManager;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.ProposeRequest;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 public class Main extends JavaPlugin {

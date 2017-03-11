@@ -10,7 +10,7 @@ import java.util.List;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import vip.creeper.mcserverplugins.creepermarriage.Main;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.MarriagePlayer;
+import vip.creeper.mcserverplugins.creepermarriage.MarriagePlayer;
 //import vip.creeper.mcserverplugins.creepermarriage.marriage.SexType;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 

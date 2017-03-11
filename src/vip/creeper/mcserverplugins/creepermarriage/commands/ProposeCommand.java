@@ -8,12 +8,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import vip.creeper.mcserverplugins.creepermarriage.Main;
+import vip.creeper.mcserverplugins.creepermarriage.PayType;
+import vip.creeper.mcserverplugins.creepermarriage.ProposeRequest;
 import vip.creeper.mcserverplugins.creepermarriage.configs.MainConfig;
 import vip.creeper.mcserverplugins.creepermarriage.economies.PlayerPointsEconomy;
 import vip.creeper.mcserverplugins.creepermarriage.economies.VaultEconomy;
 import vip.creeper.mcserverplugins.creepermarriage.managers.MarriageManager;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.PayType;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.ProposeRequest;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 public class ProposeCommand implements ICommand {

@@ -2,8 +2,8 @@ package vip.creeper.mcserverplugins.creepermarriage.caches;
 
 import java.util.HashMap;
 
+import vip.creeper.mcserverplugins.creepermarriage.MarriagePlayer;
 import vip.creeper.mcserverplugins.creepermarriage.configs.MainConfig;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.MarriagePlayer;
 
 public class MarriageCacheManager {
 	public static HashMap<String,MarriagePlayer> cache=new HashMap<String,MarriagePlayer>();

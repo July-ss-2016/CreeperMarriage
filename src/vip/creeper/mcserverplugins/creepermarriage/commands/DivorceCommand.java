@@ -5,8 +5,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import vip.creeper.mcserverplugins.creepermarriage.MarriagePlayer;
 import vip.creeper.mcserverplugins.creepermarriage.managers.MarriageManager;
-import vip.creeper.mcserverplugins.creepermarriage.marriage.MarriagePlayer;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 public class DivorceCommand implements ICommand {
