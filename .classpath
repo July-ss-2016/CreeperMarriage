@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/PlayerPoints.jar"/>
+	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/Vault.jar"/>
+	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/spigot/spigot-1.8.8-R0.1-SNAPSHOT.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="https://jd.bukkit.org/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/PlaceholderAPI (1).jar"/>
+	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/CreeperTitleApi.jar"/>
+	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/BossShop.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

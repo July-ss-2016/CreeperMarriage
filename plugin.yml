@@ -1,0 +1,8 @@
+name: CreeperMarriage
+main: vip.creeper.mcserverplugins.creepermarriage.Main
+author: July_ss
+version: 1.0.0
+depend: [Vault,CreeperTitleApi,PlaceholderAPI]
+commands:
+  cmarry:
+   aliases: [cm,marry]
