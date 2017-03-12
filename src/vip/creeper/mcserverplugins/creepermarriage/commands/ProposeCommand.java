@@ -26,31 +26,32 @@ public class ProposeCommand implements ICommand {
 			String playerName=player.getName();
 			//发起结婚请求
 			if(args.length==2 && args[0].equalsIgnoreCase("pro")) {
-				Player partner=Bukkit.getPlayer(args[1]);
-				if(partner==null || !partner.isOnline()) {
-					Util.sendMsg(player, "&c该玩家不在线!");
-					return true;
-				}
-				String partnerName=partner.getName();
+				String partnerName=args[1];
 				Util.sendMsg(player, "请先选择支付方式(左键下面的其中一个文字)：");
 				Util.sendMsg(player, "");
 				Util.sendRawMsg(player, 
 						"[\"\",{\"text\":\"[CreeperMarriage] \",\"color\":\"green\"},{\"text\":\"点我花费"+MainConfig.marrySpendMoney+"个金币来支付\",\"color\":\"yellow\",\"underlined\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/cmarry pro paytype money "+partnerName+"\"}},{\"text\":\" \",\"color\":\"none\",\"underlined\":false},{\"text\":\"点我花费"+MainConfig.marrySpendPoints+"个点券来支付\",\"color\":\"yellow\",\"underlined\":true,\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/cmarry pro paytype points "+partnerName+"\"}}]");
 				Util.sendMsg(player, "");
+				return true;
 			}
+			
 			//确认支付方式
 			if(args.length==4 && args[0].equals("pro") && args[1].equals("paytype")) {
 				Player partner=Bukkit.getPlayer(args[3]);
-				//再次判断复核
+				String partnerName=args[3];
 				//判断是否在线
 				if(partner==null || !partner.isOnline()) {
 					Util.sendMsg(player, "&c该玩家不在线!");
 					return true;
 				}
-				String partnerName=partner.getName();
+				//不能自己和自己结婚
+				if(playerName.equals(partnerName)) {
+					Util.sendMsg(player, "&c你不能和自己结婚!");
+					return true;					
+				}
 				//判断自己是否已经结婚
 				if(MarriageManager.isMarriedPlayer(playerName)) {
-					Util.sendMsg(player, "&c你不能出轨!");
+					Util.sendMsg(player, "&c你已经结婚了!");
 					return true;
 				}
 				//判断被求婚的是否已经结婚

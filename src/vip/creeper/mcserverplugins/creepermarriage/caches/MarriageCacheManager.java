@@ -21,4 +21,8 @@ public class MarriageCacheManager {
 		}
 		return result;
 	}
+	public static void update(String playerName) {
+		cache.put(playerName, new MarriagePlayer(playerName));
+		cacheLiveTime.put(playerName, System.currentTimeMillis());
+	}
 }

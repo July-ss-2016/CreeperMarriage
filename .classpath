@@ -10,7 +10,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/PlaceholderAPI (1).jar"/>
-	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/CreeperTitleApi.jar"/>
-	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/BossShop.jar"/>
+	<classpathentry kind="lib" path="D:/July_ss/vip.creeper/Code/CodeDependApi/Api/minecraft/plugins/CreeperTitleAPI.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

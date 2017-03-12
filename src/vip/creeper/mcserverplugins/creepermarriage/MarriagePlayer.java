@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import vip.creeper.mcserverplugins.creepermarriage.caches.MarriageCacheManager;
 import vip.creeper.mcserverplugins.creepermarriage.managers.MarriageManager;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
@@ -20,24 +21,17 @@ public class MarriagePlayer {
 	private String partnerName;
 	private Date marriedDate;
 	public MarriagePlayer(String name) {
-		if(name==null) {
-			return;
-		}
 		this.name=name;
-		//伴侣的数据文件
-		this.partnerFile=new File(MarriageManager.playerDataFolder.getAbsolutePath()+File.separator+this.partnerName+".yml");
-		//该玩家的数据文件
 		this.playerFile=new File(MarriageManager.playerDataFolder.getAbsolutePath()+File.separator+name+".yml");
 		//判断是否真的存在这个MarriagePlayer
 		this.isEmptyMarriagePlayer=!playerFile.exists();
-		if(isEmptyMarriagePlayer) {
-			return;
+		if(!isEmptyMarriagePlayer) {
+			this.playerYaml=YamlConfiguration.loadConfiguration(this.playerFile);
+			this.partnerName=playerYaml.getString("partnerName");
+			this.partnerFile=new File(MarriageManager.playerDataFolder.getAbsolutePath()+File.separator+this.partnerName+".yml");
+			this.partnerYaml=YamlConfiguration.loadConfiguration(new File(MarriageManager.playerDataFolder.getAbsolutePath()+File.separator+this.partnerName+".yml"));
+			this.marriedDate=Util.strToDate(playerYaml.getString("marriedDate"));
 		}
-		this.playerYaml=YamlConfiguration.loadConfiguration(this.playerFile);
-		this.partnerYaml=YamlConfiguration.loadConfiguration(new File(MarriageManager.playerDataFolder.getAbsolutePath()+File.separator+this.partnerName+".yml"));
-		this.partnerName=playerYaml.getString("partnerName");
-		this.marriedDate=Util.strToDate(playerYaml.getString("marriedDate"));
-		//this.sex=SexType.valueOf(playerYaml.getString("playerSex"));
 	}
 	public boolean isEmpty() {
 		return this.isEmptyMarriagePlayer;
@@ -62,6 +56,8 @@ public class MarriagePlayer {
 			partnerFile.delete();
 			MarriageManager.removePlayerFromMarriedPlayerList(this.name);
 			MarriageManager.removePlayerFromMarriedPlayerList(partnerName);
+			MarriageCacheManager.update(this.name);
+			MarriageCacheManager.update(partnerName);
 			result=true;
 		}
 		return result;

@@ -22,12 +22,14 @@ public class DenyCommand implements ICommand {
 				return true;
 			}
 			ProposeRequest request=plugin.marryRequests.get(suitorName);
+			plugin.marryRequests.remove(suitorName);
 			if(!request.getPartnerName().equalsIgnoreCase(playerName)) {
 				Util.sendMsg(player, "&c参数错误: 对象不符!");
+				return true;
 			}
-			plugin.marryRequests.remove(suitorName);
 			Util.sendMsg(player, "&e已拒绝!");
 			Util.sendMsg(Bukkit.getPlayer(suitorName), "&e"+playerName+" &e谢绝了你的结婚请求!");
+			return true;
 		}
 		return false;
 	}

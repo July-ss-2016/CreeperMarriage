@@ -19,13 +19,16 @@ public class BaseCommandHandler implements CommandExecutor {
 		commands.put("help", new HelpCommand());
 		commands.put("deny", new DenyCommand());
 		commands.put("list", new ListCommand());
+		commands.put("op", new OpCommand());
 	}
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String lable, String[] args) {
 		if(args.length>=1) {
 			String lowerArg=args[0].toLowerCase();
 			if(commands.containsKey(lowerArg)) {
-				commands.get(lowerArg).execute(cs, cmd, lable, args);
+				if(!commands.get(lowerArg).execute(cs, cmd, lable, args)) {
+					commands.get("help").execute(cs, cmd, lable, args);
+				}
 				return true;
 			}
 		}

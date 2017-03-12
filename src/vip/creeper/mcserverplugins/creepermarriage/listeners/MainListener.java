@@ -3,9 +3,9 @@ package vip.creeper.mcserverplugins.creepermarriage.listeners;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import java.util.Date;
 
 import org.bukkit.Effect;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Result;
@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.ItemStack;
 
 import vip.creeper.mcserverplugins.creepermarriage.MarriageItem;
@@ -23,10 +24,9 @@ import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 
 public class MainListener implements Listener {
-	//gui
+	//背包点击事件
 	@EventHandler
 	public void onInventoryClickEvent(InventoryClickEvent event) {
-		
 		Player player=(Player)event.getWhoClicked();
 		InventoryAction act=event.getAction();
 		String title=event.getInventory().getTitle();
@@ -35,7 +35,6 @@ public class MainListener implements Listener {
 		if(item==null) {
 			return;
 		}
-		
 		if(title.startsWith("§c§l虐狗榜")) {
 			event.setCancelled(true);
 			event.setResult(Result.DENY);
@@ -45,13 +44,17 @@ public class MainListener implements Listener {
 					player.performCommand("cmarry list "+(page+1));						
 					return;
 				}
-				player.performCommand("cmarry list "+(page-1));	
-				return;	
+				if(act==InventoryAction.PICKUP_HALF) {
+					player.performCommand("cmarry list "+(page-1));	
+					return;		
+				}
 			}
+			
 			if(item.equals(MarriageItem.ITEM_NEXTPAGE)) {
 				player.performCommand("cmarry list "+(page+1));	
 				return;						
 			}
+			
 			if(item.equals(MarriageItem.ITEM_LASTPAGE_AND_NEXTPAGE)) {
 				if(act==InventoryAction.PICKUP_ALL) {
 					player.performCommand("cmarry list "+(page+1));	
@@ -64,16 +67,17 @@ public class MainListener implements Listener {
 			}
 		}
 	}
-	//设置mp最后下线时间
+	//上线事件
 	@EventHandler
 	public void onPlayerJoinEvent(PlayerJoinEvent event) throws Exception {
-		Player player=event.getPlayer();
-		String playerName=player.getName();
-		if(MarriageManager.isMarriedPlayer(player.getName())) {
-			MarriageManager.setMarriagePlayerLastLoginTime(playerName, new Date());
-		}
+		MarriageManager.updateMarriagePlayerLastLoginTime(event.getPlayer().getName());
 	}
-	//fuck事件
+	//下线事件
+	@EventHandler
+	public void onPlayerQuitEvent(PlayerQuitEvent event) {	
+		MarriageManager.updateMarriagePlayerLastLoginTime(event.getPlayer().getName());
+	}
+	//Fuck事件
 	@EventHandler
 	public void onPlayerInteractEntityEvent(PlayerInteractEntityEvent event) {
 		Player player=event.getPlayer();
@@ -84,13 +88,16 @@ public class MainListener implements Listener {
 			return;
 		}
 		if((entity instanceof Player)) {
-			MarriagePlayer mp=MarriageCacheManager.getMarriagePlayer(playerName);
-			if(!mp.isEmpty()) {
-				if(mp.getPartnerName().equals(playerName)) {
-					player.getWorld().playEffect(player.getLocation(), Effect.HEART, 3);
-					Util.sendMsg(player, "a~");
-					Util.sendMsg(entity, "a~");
-				}
+			Player partner=(Player)entity;
+			if(MarriageManager.isMarriedPlayer(playerName)) {
+				MarriagePlayer marriedPlayer=MarriageCacheManager.getMarriagePlayer(playerName);
+				if(marriedPlayer.getPartnerName().equals(partner.getName())) {
+					Location loc=partner.getLocation();
+					loc.setY(loc.getY()+3);
+					partner.getWorld().playEffect(loc, Effect.HEART, 3);
+					Util.sendMsg(player, "a~ a~ a~");
+					Util.sendMsg(player, "a~ a~ a~");
+				}	
 			}
 		}
 	}

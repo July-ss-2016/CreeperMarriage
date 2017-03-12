@@ -1,13 +1,12 @@
 package vip.creeper.mcserverplugins.creepermarriage.commands;
 
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import vip.creeper.mcserverplugins.creepermarriage.configs.MainConfig;
 
-public class OpCommand implements CommandExecutor {
-	public boolean onCommand(CommandSender cs,Command cmd,String lable,String[] args) {
+public class OpCommand implements ICommand {
+	public boolean execute(CommandSender cs, Command cmd, String lable, String[] args) {
 		if(!(cs.hasPermission("CreeperMarriage.admin"))) {
 			return true;
 		}

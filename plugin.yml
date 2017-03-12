@@ -2,8 +2,8 @@ name: CreeperMarriage
 main: vip.creeper.mcserverplugins.creepermarriage.Main
 author: July_ss
 version: 1.0.0
-softdepend: [BossShop,PlaceholderAPI]
-depend: [Vault,PlayerPoints,CreeperTitleApi]
+softdepend: [PlaceholderAPI]
+depend: [Vault,PlayerPoints,CreeperTitleAPI]
 commands:
   cmarry:
-   aliases: [cm,marry]
+   aliases: [marry]

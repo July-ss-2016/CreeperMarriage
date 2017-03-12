@@ -22,12 +22,13 @@ public class TpCommand implements ICommand {
 			}
 			MarriagePlayer mp=new MarriagePlayer(playerName);
 			Player partner=Bukkit.getPlayer(mp.getPartnerName());
-			if(!partner.isOnline()) {
+			if(partner==null || !partner.isOnline()) {
 				Util.sendMsg(player, "&c你的情侣不在线!");
 				return true;
 			}
 			player.teleport(partner.getLocation());
 			Util.sendMsg(player, "&e已传送!");
+			return true;
 		}
 		return false;
 	}

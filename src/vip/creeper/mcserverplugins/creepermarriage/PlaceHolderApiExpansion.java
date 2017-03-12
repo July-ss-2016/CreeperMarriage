@@ -17,7 +17,7 @@ public class PlaceHolderApiExpansion extends EZPlaceholderHook {
 		String result=null;
 		switch(str) {
 		case "ismarried":
-			result=mp.isEmpty()?MainConfig.marriedPrefix:MainConfig.unMarriedPrefix;
+			result=mp.isEmpty()?MainConfig.unMarriedPrefix:MainConfig.marriedPrefix;
 			break;
 		case "partner":
 			String partner=mp.getPartnerName();

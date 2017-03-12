@@ -13,7 +13,6 @@ public class DivorceCommand implements ICommand {
 
 	@Override
 	public boolean execute(CommandSender cs, Command cmd, String lable, String[] args) {
-		
 		Player player=(Player)cs;
 		String playerName=player.getName();
 		if(!MarriageManager.isMarriedPlayer(playerName)) {
@@ -31,5 +30,4 @@ public class DivorceCommand implements ICommand {
 		Util.sendMsg(partner, "&e"+playerName+" &c和你离婚了...");
 		return true;
 	}
-
 }
