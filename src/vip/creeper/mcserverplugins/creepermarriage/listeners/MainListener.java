@@ -83,11 +83,8 @@ public class MainListener implements Listener {
 		Player player=event.getPlayer();
 		String playerName=player.getName();
 		Entity entity=event.getRightClicked();
-		//判断是否在潜行
-		if(!player.isSneaking()) {
-			return;
-		}
-		if((entity instanceof Player)) {
+		
+		if(player.isSneaking() && (entity instanceof Player)) {
 			Player partner=(Player)entity;
 			if(MarriageManager.isMarriedPlayer(playerName)) {
 				MarriagePlayer marriedPlayer=MarriageCacheManager.getMarriagePlayer(playerName);

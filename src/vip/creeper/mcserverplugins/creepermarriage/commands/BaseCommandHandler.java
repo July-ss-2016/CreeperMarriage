@@ -19,14 +19,18 @@ public class BaseCommandHandler implements CommandExecutor {
 		commands.put("help", new HelpCommand());
 		commands.put("deny", new DenyCommand());
 		commands.put("list", new ListCommand());
-		commands.put("op", new OpCommand());
 	}
 	@Override
 	public boolean onCommand(CommandSender cs, Command cmd, String lable, String[] args) {
 		if(args.length>=1) {
 			String lowerArg=args[0].toLowerCase();
+			if(!cs.hasPermission("CreeperMarriage.use")) {
+				Util.sendMsg(cs, "&c你没有权限!");
+				return true;
+			}
 			if(commands.containsKey(lowerArg)) {
 				if(!commands.get(lowerArg).execute(cs, cmd, lable, args)) {
+					Util.sendMsg(cs, "&c指令有误!");
 					commands.get("help").execute(cs, cmd, lable, args);
 				}
 				return true;
@@ -34,7 +38,7 @@ public class BaseCommandHandler implements CommandExecutor {
 		}
 		Util.sendMsg(cs, "&c指令有误!");
 		commands.get("help").execute(cs, cmd, lable, args);
-		return false;
+		return true;
 	}
 	
 }

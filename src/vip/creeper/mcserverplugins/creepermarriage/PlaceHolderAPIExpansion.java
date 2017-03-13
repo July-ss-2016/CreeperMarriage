@@ -5,9 +5,9 @@ import vip.creeper.mcserverplugins.creepermarriage.configs.MainConfig;
 import vip.creeper.mcserverplugins.creepermarriage.utils.Util;
 
 import org.bukkit.entity.Player;
-public class PlaceHolderApiExpansion extends EZPlaceholderHook {
+public class PlaceHolderAPIExpansion extends EZPlaceholderHook {
 
-	public PlaceHolderApiExpansion(final Main plugin) {
+	public PlaceHolderAPIExpansion(final Main plugin) {
 		super(plugin, "creepermarriage");
 	}
 
@@ -26,11 +26,17 @@ public class PlaceHolderApiExpansion extends EZPlaceholderHook {
 		case "marriageage":
 			result=String.valueOf(mp.getMarriageAge());
 			break;
-		case "marriedage":
+		case "marrieddate":
 			result=Util.dateToStr(mp.getMarriedDate());
+			if(result==null) {
+				result="NULL";
+			}
 			break;
 		case "partnerlastlogintime":
 			result=Util.dateToStr(mp.getPartnerLastLoginTime());
+			if(result==null) {
+				result="NULL";
+			}
 			break;
 		}
 		return result;
