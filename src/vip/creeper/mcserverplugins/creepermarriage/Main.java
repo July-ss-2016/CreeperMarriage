@@ -8,6 +8,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import vip.creeper.mcserverplugins.creepermarriage.commands.BaseCommandHandler;
+import vip.creeper.mcserverplugins.creepermarriage.commands.OpCommand;
 import vip.creeper.mcserverplugins.creepermarriage.configs.MainConfig;
 import vip.creeper.mcserverplugins.creepermarriage.economies.PlayerPointsEconomy;
 import vip.creeper.mcserverplugins.creepermarriage.economies.VaultEconomy;
@@ -42,16 +43,21 @@ public class Main extends JavaPlugin {
 			getLogger().info("data/marriedplayers.yml 文件创建完毕!");
 		}
 		//Hook插件
+		getLogger().info("Vault/PlayerPoints/CreeperTitleAPI Hook成功!");
 		if(!VaultEconomy.hookVaultEconomy() || !PlayerPointsEconomy.hookPlayerPointsEconomy()) {
 			getLogger().info("Hook Vault/PlayerPoints 失败!");
 			getLogger().info("插件将被卸载!");
 			setEnabled(false);
 		}
 		if(Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
-			new PlaceHolderApiExpansion(this).hook();
-			getLogger().info("PlaceholderAPI Hook 成功!");
+			if(new PlaceHolderAPIExpansion(this).hook()) {
+				getLogger().info("PlaceholderAPI Hook 成功!");	
+			} else {
+				getLogger().info("PlaceholderAPI Hook 失败!");
+			}
 		}
 		getCommand("cmarry").setExecutor(new BaseCommandHandler());
+		getCommand("ocmarry").setExecutor(new OpCommand());
 		getLogger().info("命令注册完毕!");
 		Bukkit.getPluginManager().registerEvents(new MainListener(), this);
 		getLogger().info("事件注册完毕!");

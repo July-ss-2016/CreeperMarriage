@@ -16,6 +16,7 @@ public class HelpCommand implements ICommand {
 		cs.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7- &f/cmarry div &7- &f离婚"));
 		cs.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7- &f/cmarry info &7- &f查看你们的婚姻信息"));
 		cs.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7- &f/cmarry list &7- &f查看所有情侣"));
+		cs.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7- &fShift + 右键你的情侣 &7- &fFuck!"));
 		return true;
 	}
 

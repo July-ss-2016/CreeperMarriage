@@ -85,6 +85,9 @@ public class MarriageManager {
 			partnerYaml.set("partnerName", playerName);
 			partnerYaml.set("marriedDate", new SimpleDateFormat("yyyy/MM/dd").format(marriedDate));
 			partnerYaml.save(partnerFile);
+			//更新最后登录时间
+			MarriageManager.updateMarriagePlayerLastLoginTime(playerName);
+			MarriageManager.updateMarriagePlayerLastLoginTime(partnerName);
 			//存到已结婚玩家的列表中
 			addPlayerToMarriedPlayerList(playerName);
 			//更新cache
@@ -101,7 +104,15 @@ public class MarriageManager {
 		boolean result=false;
 		if(playerFile.exists()) {
 			YamlConfiguration playerYaml=YamlConfiguration.loadConfiguration(playerFile);
-			playerYaml.set("lastLoginTime", Util.dateToStr(new Date()));			
+			playerYaml.set("lastLoginTime", Util.dateToStr(new Date()));		
+			
+			try {
+				playerYaml.save(playerFile);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			result=true;
 		}
 		return result;

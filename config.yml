@@ -1,13 +1,13 @@
 settings:
   #前缀(已婚)
-  married_prefix: '&c[已婚]'
+  married_prefix: '&d[已婚]'
   #前缀(未婚)
   unmarried_prefix: '&f[未婚]'
   #结婚花费的金币
-  marry_spend_money: 6666
+  marry_spend_money: 1111
   #结婚花费的点券
   marry_spend_points: 15
   #bs的店名
-  info_shop_name: 'CreeperMarriageInfoShop'
+  info_shop_name: 'CreeperMarriageInfo'
   #缓存期限,15分钟,单位s
   cache_livetime: 900 

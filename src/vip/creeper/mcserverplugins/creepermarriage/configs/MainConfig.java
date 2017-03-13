@@ -13,10 +13,10 @@ public class MainConfig {
 	public static long cacheLiveTime=0;
 	public static String infoShopName=null;
 	private static Main plugin=Main.getInstance();
-	private static FileConfiguration config=plugin.getConfig();
 	public static void loadConfig() {
 		plugin.saveDefaultConfig();
 		plugin.reloadConfig();
+		FileConfiguration config=plugin.getConfig();
 		marriedPrefix=Util.translateColorCodes(config.getString("settings.married_prefix"));
 		unMarriedPrefix=Util.translateColorCodes(config.getString("settings.unmarried_prefix"));
 		marrySpendMoney=config.getInt("settings.marry_spend_money");

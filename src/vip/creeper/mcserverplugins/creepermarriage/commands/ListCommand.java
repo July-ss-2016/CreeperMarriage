@@ -74,6 +74,25 @@ public class ListCommand implements ICommand {
 	@Override
 	public boolean execute(CommandSender cs, Command cmd, String lable, String[] args) {
 		Player player=(Player)cs;
+		//判断更新list
+		if(System.currentTimeMillis()-lastInvUpdateTime>600000) {
+			Runnable syncRunnable=new Runnable() {
+				@Override
+				public void run() {
+					updateMarriagePlayerListInv();
+				}
+			};
+			//启动异步线程更新
+			Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable() {
+				@Override
+				public void run() {
+					Bukkit.getScheduler().runTask(plugin, syncRunnable);
+				}
+			});
+			//更新时间
+			lastInvUpdateTime=System.currentTimeMillis();
+		}
+		
 		if(marriagePlayerListInv.size()==0) {
 			Util.sendMsg(player, "&c当前没有任何一个玩家结婚!");
 			return true;
@@ -94,24 +113,6 @@ public class ListCommand implements ICommand {
 					player.openInventory(marriagePlayerListInv.get(0));
 				} else {
 					player.openInventory(marriagePlayerListInv.get(page-1));	
-				}
-				//判断更新list
-				if(System.currentTimeMillis()-lastInvUpdateTime>600000) {
-					Runnable syncRunnable=new Runnable() {
-						@Override
-						public void run() {
-							updateMarriagePlayerListInv();
-						}
-					};
-					//启动异步线程更新
-					Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable() {
-						@Override
-						public void run() {
-							Bukkit.getScheduler().runTask(plugin, syncRunnable);
-						}
-					});
-					//更新时间
-					lastInvUpdateTime=System.currentTimeMillis();
 				}
 				return true;
 			}

@@ -17,6 +17,7 @@ public class InfoCommand implements ICommand {
 			return true;
 		}
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "bs open "+MainConfig.infoShopName+" "+player.getName());
+		Util.sendMsg(player, "已打开.");
 		return true;
 	}
 
