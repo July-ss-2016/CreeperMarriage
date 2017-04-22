@@ -21,10 +21,6 @@ public class DivorceCommand implements ICommand {
 		}
 		MarriagePlayer mp=new MarriagePlayer(playerName);
 		Player partner=Bukkit.getPlayer(mp.getPartnerName());
-		if(partner==null || !partner.isOnline()) {
-			Util.sendMsg(player, "&c你的情侣在线时你才能离婚!");
-			return true;
-		}
 		mp.divorce();
 		Util.sendMsg(player, "&c离婚了QAQ.");
 		Util.sendMsg(partner, "&e"+playerName+" &c和你离婚了...");

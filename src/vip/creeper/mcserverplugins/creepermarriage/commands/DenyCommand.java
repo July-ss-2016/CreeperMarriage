@@ -30,7 +30,7 @@ public class DenyCommand implements ICommand {
 			Util.sendMsg(player, "&e已拒绝!");
 			Util.sendMsg(Bukkit.getPlayer(suitorName), "&e"+playerName+" &e谢绝了你的结婚请求!");
 			return true;
-		}
+		} 
 		return false;
 	}
 
