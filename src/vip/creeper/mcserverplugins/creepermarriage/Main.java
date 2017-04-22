@@ -61,6 +61,7 @@ public class Main extends JavaPlugin {
 		getLogger().info("命令注册完毕!");
 		Bukkit.getPluginManager().registerEvents(new MainListener(), this);
 		getLogger().info("事件注册完毕!");
+		getLogger().info("作者QQ：884633197");
 		Util.info("插件初始化完毕!");
 	}
 	public void onDisable() {
