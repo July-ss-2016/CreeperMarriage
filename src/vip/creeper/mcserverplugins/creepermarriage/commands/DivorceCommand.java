@@ -22,7 +22,7 @@ public class DivorceCommand implements ICommand {
 		MarriagePlayer mp=new MarriagePlayer(playerName);
 		Player partner=Bukkit.getPlayer(mp.getPartnerName());
 		mp.divorce();
-		//test
+		//testt
 		Util.sendMsg(player, "");
 		Util.sendMsg(player, "&c离婚了QAQ.");
 		Util.sendMsg(partner, "&e"+playerName+" &c和你离婚了...");
